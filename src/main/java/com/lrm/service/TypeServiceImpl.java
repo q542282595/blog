@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class TypeServiceImpl implements TypeService {
     @Autowired
-    TypeRepository typeRepository;
+    private TypeRepository typeRepository;
 
     @Override
     public Type getTypeByName(String name) {

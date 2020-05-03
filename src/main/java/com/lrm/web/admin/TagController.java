@@ -23,7 +23,7 @@ import javax.validation.Valid;
 @RequestMapping("/admin")
 public class TagController {
     @Autowired
-    TagService tagService;
+    private TagService tagService;
     @RequestMapping("/tags")
     public String tags(@PageableDefault(size = 3,sort = {"id"} ,direction = Sort.Direction.DESC) Pageable pageable, Model model)
     {

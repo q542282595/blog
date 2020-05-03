@@ -28,7 +28,7 @@ import java.util.List;
 @Service
 public class BlogServiceImpl implements BlogService {
     @Autowired
-    BlogRepository blogRepository;
+   private BlogRepository blogRepository;
     @Transactional
     @Override
     public Blog saveBlog(Blog blog) {

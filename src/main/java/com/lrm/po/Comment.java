@@ -2,6 +2,7 @@ package com.lrm.po;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "t_comment")
@@ -17,6 +18,10 @@ public class Comment {
     private Date createTime;
     @ManyToOne
     private Blog blog;
+    @ManyToOne
+    private Comment parentComment;
+    @OneToMany(mappedBy = "parentComment")
+    private List<Comment> replyComment;
 
     public Comment() {
     }
@@ -77,6 +82,22 @@ public class Comment {
         this.blog = blog;
     }
 
+    public Comment getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(Comment parentComment) {
+        this.parentComment = parentComment;
+    }
+
+    public List<Comment> getReplyComment() {
+        return replyComment;
+    }
+
+    public void setReplyComment(List<Comment> replyComment) {
+        this.replyComment = replyComment;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -86,6 +107,8 @@ public class Comment {
                 ", content='" + content + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", createTime=" + createTime +
+                ", blog=" + blog +
+                ", parentComment=" + parentComment +
                 '}';
     }
 }

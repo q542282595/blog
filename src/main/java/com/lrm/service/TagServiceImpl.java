@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class TagServiceImpl implements TagService {
     @Autowired
-    TagRepository tagRepository;
+    private TagRepository tagRepository;
 
     @Override
     public Tag getTagByName(String name) {

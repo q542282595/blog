@@ -21,7 +21,7 @@ import javax.validation.Valid;
 @RequestMapping("/admin")
 public class TypeController {
     @Autowired
-    TypeService typeService;
+    private TypeService typeService;
     @RequestMapping("/types")
     public String types(@PageableDefault(size = 3,sort = {"id"} ,direction = Sort.Direction.DESC) Pageable pageable, Model model)
     {

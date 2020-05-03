@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class IndexController {
     @Autowired
-    BlogService blogService;
+    private BlogService blogService;
     @Autowired
-    TypeService typeService;
+    private TypeService typeService;
     @Autowired
-    TagService tagService;
+    private TagService tagService;
     @GetMapping("/")
     public String index(@PageableDefault(size =8,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable, Model model)
     {

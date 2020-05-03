@@ -29,11 +29,11 @@ public class BlogController {
     private static final String LIST="admin/blogs";
     private static final String REDIRECT_LIST="redirect:/admin/blogs";
     @Autowired
-    BlogService blogService;
+    private BlogService blogService;
     @Autowired
-    TypeService typeService;
+    private TypeService typeService;
     @Autowired
-    TagService tagService;
+    private TagService tagService;
     @GetMapping("/blogs")
     public String blogs(@PageableDefault(size = 2,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model)
     {

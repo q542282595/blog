@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/admin")
 public class LoginController {
     @Autowired
-    UserService userService;
+    private UserService userService;
     @GetMapping
     public String loginPage()
     {

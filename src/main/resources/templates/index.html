@@ -27,7 +27,7 @@
                         <div class="ui padded vertical segment m-padded-tb-big" th:each="blog : ${page.content}">
                             <div class="ui middle aligned mobile reversed stackable grid" >
                                 <div class="eleven wide column">
-                                    <h3 class="ui header"><a href="#" class="m-black" th:text="${blog.title}"></a></h3>
+                                    <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}"></a></h3>
                                     <p class="m-text" th:text="|${blog.description}....|">问题描述 对于长度为5位的一个01串，每一位都可能是0或1，一共有32种可能。它们的前几个是： 00000 00001 00010 00011 00100 请按从小到大的顺序输出这32种01串。......</p>
                                     <div class="ui stackable grid">
                                         <div class="eleven wide column">
