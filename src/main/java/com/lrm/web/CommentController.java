@@ -1,6 +1,7 @@
 package com.lrm.web;
 
 import com.lrm.po.Comment;
+import com.lrm.po.User;
 import com.lrm.service.BlogService;
 import com.lrm.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class CommentController {
@@ -26,11 +29,19 @@ public class CommentController {
         return "blog::commentList";
     }
     @PostMapping("/comments")
-    public String post(Comment comment)
+    public String post(Comment comment, HttpSession session)
     {
         Long blogId=comment.getBlog().getId();
         comment.setBlog(blogService.getBlog(blogId));
-        comment.setAvatar(avatar);
+        User user= (User) session.getAttribute("user");
+        if(user!=null)
+        {
+            comment.setAvatar(user.getAvatar());
+            comment.setAdminComment(true);
+        }else
+        {
+            comment.setAvatar(avatar);
+        }
         commentService.saveComment(comment);
         return "redirect:/comments/"+blogId;
     }

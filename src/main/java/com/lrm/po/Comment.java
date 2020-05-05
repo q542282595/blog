@@ -22,6 +22,7 @@ public class Comment {
     private Comment parentComment;
     @OneToMany(mappedBy = "parentComment")
     private List<Comment> replyComment;
+    private boolean adminComment;
 
     public Comment() {
     }
@@ -96,6 +97,14 @@ public class Comment {
 
     public void setReplyComment(List<Comment> replyComment) {
         this.replyComment = replyComment;
+    }
+
+    public boolean isAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
     }
 
     @Override

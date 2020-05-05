@@ -22,12 +22,12 @@
 <nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">Blog</h2>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==1}?'active'"><i class="home icon"></i>首页</a>
-            <a href="#" class="m-item item m-mobile-hide"th:classappend="${n==2}?'active'" ><i class="idea icon"></i>分类</a>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==3}?'active'"><i class="tag icon"></i>标签</a>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==4}?'active'"><i class="clone icon"></i>归档</a>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==5}?'active'"><i class="info icon"></i>关于我</a>
+            <a href="" th:href="@{/}"><h2 class="ui teal header item">Blog</h2></a>
+            <a href="#" th:href="@{/}" class="m-item item m-mobile-hide" th:classappend="${n==1}?'active'"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide"th:classappend="${n==2}?'active'" ><i class="idea icon"></i>分类</a>
+            <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3}?'active'"><i class="tag icon"></i>标签</a>
+            <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4}?'active'"><i class="clone icon"></i>归档</a>
+            <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5}?'active'"><i class="info icon"></i>关于我</a>
             <div class="right item m-mobile-hide">
                 <form action="#" th:action="@{/search}" name="search" method="post" target="_blank">
                 <div class="ui inverted transparent icon input">
@@ -56,10 +56,10 @@
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">用户故事 (User Story)</a>
-                    <a href="#" class="item">用户故事 (User Story)</a>
-                    <a href="#" class="item">用户故事 (User Story)</a>
+                <div id="newblog-container">
+                    <div class="ui inverted link list" th:fragment="newblogList">
+                        <a href="#" class="item" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}" th:each="blog:${newblogs}">用户故事 (User Story)</a>
+                    </div>
                 </div>
             </div>
             <div class="three wide column">
@@ -77,6 +77,7 @@
         <div class="ui inverted section divider"></div>
         <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019 - 2020 Jack</p>
     </div>
+
 </footer>
 </body>
 </html>
